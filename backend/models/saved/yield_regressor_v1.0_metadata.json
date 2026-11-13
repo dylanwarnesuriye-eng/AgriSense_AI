@@ -1,0 +1,237 @@
+{
+  "model_name": "Ridge Crop Yield Regressor",
+  "model_version": "v1.0",
+  "created_at_utc": "2026-09-22T03:54:30.096684+00:00",
+  "algorithm": "sklearn.linear_model.Ridge",
+  "dataset": {
+    "path": "D:\\AI project\\backend\\data\\raw\\crop_yield_train.csv",
+    "sha256": "e42e7896f4830154185835fe0437e18dfeffddd9d1e86998326852bc271971f0",
+    "total_records": 4800,
+    "dev_records": 3865,
+    "holdout_records": 935,
+    "dev_fields_count": 398,
+    "holdout_fields_count": 100,
+    "field_overlap": 0
+  },
+  "supported_crops": [
+    "Wheat",
+    "Barley",
+    "Corn",
+    "Rice",
+    "Soybean"
+  ],
+  "integrated_pathway_crops": [
+    "Rice",
+    "Corn"
+  ],
+  "feature_schema": {
+    "input_names": [
+      "soil_ph",
+      "soil_moisture",
+      "avg_temperature",
+      "total_rainfall",
+      "nitrogen_content",
+      "phosphorus_content",
+      "potassium_content",
+      "fertilizer_amount",
+      "pesticide_usage",
+      "sunlight_hours",
+      "irrigation_frequency",
+      "crop_type",
+      "region",
+      "season"
+    ],
+    "order": [
+      "soil_ph",
+      "soil_moisture",
+      "avg_temperature",
+      "total_rainfall",
+      "nitrogen_content",
+      "phosphorus_content",
+      "potassium_content",
+      "fertilizer_amount",
+      "pesticide_usage",
+      "sunlight_hours",
+      "irrigation_frequency",
+      "crop_type",
+      "region",
+      "season"
+    ],
+    "numerical_features": [
+      "soil_ph",
+      "soil_moisture",
+      "avg_temperature",
+      "total_rainfall",
+      "nitrogen_content",
+      "phosphorus_content",
+      "potassium_content",
+      "fertilizer_amount",
+      "pesticide_usage",
+      "sunlight_hours",
+      "irrigation_frequency"
+    ],
+    "categorical_features": [
+      "crop_type",
+      "region",
+      "season"
+    ],
+    "target": "yield_tpha",
+    "target_unit": "tonnes_per_hectare (t/ha)"
+  },
+  "training_configuration": {
+    "validation_strategy": "GroupKFold(n_splits=5) grouped by field_id",
+    "hyperparameters": {
+      "alpha": 1.0,
+      "random_state": 42
+    },
+    "best_feature_set": "Extended Features"
+  },
+  "cv_model_comparison": {
+    "Core Features": {
+      "Global Mean Baseline": {
+        "mae": 0.9409978183433007,
+        "rmse": 1.1549041492823235,
+        "r2": -0.0010175120460643506
+      },
+      "Crop-Specific Mean Baseline": {
+        "mae": 0.9422454998479672,
+        "rmse": 1.1567729544414873,
+        "r2": -0.004269126858232486
+      },
+      "Ridge Regression": {
+        "mae": 0.9225478564171921,
+        "rmse": 1.127354951843699,
+        "r2": 0.04613375503456851
+      },
+      "Decision Tree Regressor": {
+        "mae": 0.9970297588378975,
+        "rmse": 1.2317904291313009,
+        "r2": -0.13866001667009398
+      },
+      "Random Forest Regressor": {
+        "mae": 0.9293738508367897,
+        "rmse": 1.1388103047949236,
+        "r2": 0.026774830177374653
+      },
+      "Gradient Boosting Regressor": {
+        "mae": 0.9255006423850405,
+        "rmse": 1.1325286357054878,
+        "r2": 0.03748193044196742
+      }
+    },
+    "Extended Features": {
+      "Global Mean Baseline": {
+        "mae": 0.9409978183433007,
+        "rmse": 1.1549041492823235,
+        "r2": -0.0010175120460643506
+      },
+      "Crop-Specific Mean Baseline": {
+        "mae": 0.9422454998479672,
+        "rmse": 1.1567729544414873,
+        "r2": -0.004269126858232486
+      },
+      "Ridge Regression": {
+        "mae": 0.5109773814966049,
+        "rmse": 0.6433031401161958,
+        "r2": 0.689322923369823
+      },
+      "Decision Tree Regressor": {
+        "mae": 0.5950985666676079,
+        "rmse": 0.7490207311510482,
+        "r2": 0.5789083002099332
+      },
+      "Random Forest Regressor": {
+        "mae": 0.5208352510955785,
+        "rmse": 0.6550267590329241,
+        "r2": 0.6780009421922991
+      },
+      "Gradient Boosting Regressor": {
+        "mae": 0.5122419958517265,
+        "rmse": 0.6438447330428227,
+        "r2": 0.6888751879829187
+      }
+    }
+  },
+  "holdout_evaluation": {
+    "train_dev_mae": 0.5081341471514553,
+    "train_dev_rmse": 0.6396253207708432,
+    "train_dev_r2": 0.6932116512875501,
+    "holdout_mae": 0.5179916834399704,
+    "holdout_rmse": 0.6424472104991766,
+    "holdout_r2": 0.6846271420521076,
+    "prediction_bias": -0.027130595516548853,
+    "residual_std": 0.6422176150422174,
+    "per_crop_metrics": {
+      "Wheat": {
+        "count": 190,
+        "mae": 0.5188873937583106,
+        "rmse": 0.635052792067676,
+        "r2": 0.7100546959855965,
+        "mean_actual": 6.225495514171663,
+        "mean_pred": 6.179620954552368
+      },
+      "Barley": {
+        "count": 183,
+        "mae": 0.5623279297901806,
+        "rmse": 0.6914647369612017,
+        "r2": 0.6247787123693442,
+        "mean_actual": 6.348377350606034,
+        "mean_pred": 6.294922306132455
+      },
+      "Corn": {
+        "count": 198,
+        "mae": 0.48738740172977973,
+        "rmse": 0.6036811462028322,
+        "r2": 0.734217871159486,
+        "mean_actual": 6.255650990747531,
+        "mean_pred": 6.261091834341892
+      },
+      "Rice": {
+        "count": 184,
+        "mae": 0.4795221831964188,
+        "rmse": 0.6009969697545947,
+        "r2": 0.6945878333116944,
+        "mean_actual": 6.198651644543853,
+        "mean_pred": 6.172616057117968
+      },
+      "Soybean": {
+        "count": 180,
+        "mae": 0.5449601155558488,
+        "rmse": 0.679749534478756,
+        "r2": 0.6457092736580379,
+        "mean_actual": 6.263396674790424,
+        "mean_pred": 6.2458666398628555
+      }
+    }
+  },
+  "model_coefficients": {
+    "num__fertilizer_amount": 0.8792653587302893,
+    "num__pesticide_usage": -0.26751562812040475,
+    "num__total_rainfall": 0.20551581004218145,
+    "num__soil_moisture": 0.07653605704426675,
+    "num__nitrogen_content": 0.06667050058910101,
+    "num__avg_temperature": -0.06491792785729954,
+    "num__potassium_content": 0.0645358626178289,
+    "cat__region_North": 0.0642744941841216,
+    "cat__crop_type_Soybean": 0.03286923321024659,
+    "num__phosphorus_content": 0.027851442053500926,
+    "cat__crop_type_Rice": -0.023079565562114632,
+    "cat__crop_type_Wheat": -0.01910422804195662,
+    "cat__season_Spring": -0.018513219342117585,
+    "num__sunlight_hours": 0.015435511976444776,
+    "cat__region_South": -0.01332864691803623,
+    "cat__crop_type_Corn": 0.012908967160086845,
+    "cat__region_West": -0.011215988637411644,
+    "cat__region_East": -0.006743234787524092,
+    "num__soil_ph": 0.00555258232424002,
+    "cat__season_Summer": 0.0019142984873493265,
+    "num__irrigation_frequency": 0.0016996689000749283
+  },
+  "environment": {
+    "python_version": "3.13.2",
+    "scikit_learn_version": "1.9.1",
+    "numpy_version": "2.5.3",
+    "pandas_version": "2.3.3",
+    "joblib_version": "1.6.0"
+  }
+}

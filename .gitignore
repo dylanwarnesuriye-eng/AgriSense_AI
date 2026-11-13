@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Linting
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Node & Frontend
+node_modules/
+frontend/dist/
+frontend/dist-ssr/
+*.local
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+firebase-service-account.json
+service-account*.json
+serviceAccount*.json
+*serviceAccountKey*.json
+*credentials*.json
+
+# Machine Learning Artifacts & Heavy Data
+# (Keep directory structure with .gitkeep)
+backend/models/saved/*.pkl
+backend/models/saved/*.joblib
+backend/models/saved/*.onnx
+backend/models/saved/*.pt
+backend/models/saved/*.h5
+backend/data/raw/*.csv
+backend/data/raw/*.xlsx
+backend/data/processed/*.csv
+backend/data/processed/*.parquet
+!backend/models/saved/.gitkeep
+!backend/data/raw/.gitkeep
+!backend/data/processed/.gitkeep
+
+# IDEs & OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

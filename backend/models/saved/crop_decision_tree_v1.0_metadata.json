@@ -1,0 +1,129 @@
+{
+  "model_name": "Decision Tree Crop Recommendation",
+  "model_version": "v1.0",
+  "created_at_utc": "2026-09-22T03:40:43.043969+00:00",
+  "algorithm": "sklearn.tree.DecisionTreeClassifier",
+  "dataset": {
+    "path": "D:\\AI project\\backend\\data\\raw\\Crop_recommendation.csv",
+    "sha256": "54a5a6e5408668e668667efc50de2fc867c1b875e0431b4f54dd331b0a109a4e",
+    "total_records": 2200,
+    "dev_records": 1760,
+    "test_records": 440
+  },
+  "feature_schema": {
+    "names": [
+      "N",
+      "P",
+      "K",
+      "temperature",
+      "humidity",
+      "ph",
+      "rainfall"
+    ],
+    "order": [
+      "N",
+      "P",
+      "K",
+      "temperature",
+      "humidity",
+      "ph",
+      "rainfall"
+    ],
+    "count": 7
+  },
+  "target_classes": [
+    "apple",
+    "banana",
+    "blackgram",
+    "chickpea",
+    "coconut",
+    "coffee",
+    "cotton",
+    "grapes",
+    "jute",
+    "kidneybeans",
+    "lentil",
+    "maize",
+    "mango",
+    "mothbeans",
+    "mungbean",
+    "muskmelon",
+    "orange",
+    "papaya",
+    "pigeonpeas",
+    "pomegranate",
+    "rice",
+    "watermelon"
+  ],
+  "training_configuration": {
+    "random_state": 42,
+    "cv_strategy": "StratifiedKFold(n_splits=5, shuffle=True)",
+    "selection_metric": "f1_macro",
+    "search_space": {
+      "criterion": [
+        "gini",
+        "entropy",
+        "log_loss"
+      ],
+      "max_depth": [
+        8,
+        10,
+        12,
+        15,
+        20,
+        "None"
+      ],
+      "min_samples_split": [
+        2,
+        5,
+        10
+      ],
+      "min_samples_leaf": [
+        1,
+        2,
+        4
+      ],
+      "ccp_alpha": [
+        0.0,
+        0.001,
+        0.003,
+        0.005
+      ]
+    },
+    "best_hyperparameters": {
+      "ccp_alpha": 0.0,
+      "criterion": "gini",
+      "max_depth": 12,
+      "min_samples_leaf": 1,
+      "min_samples_split": 5
+    }
+  },
+  "tree_structure": {
+    "depth": 12,
+    "n_leaves": 31
+  },
+  "feature_importances": {
+    "rainfall": 0.3209523191469322,
+    "P": 0.22591167557074532,
+    "humidity": 0.20032463083047308,
+    "N": 0.14460127704676318,
+    "K": 0.09868056572229804,
+    "ph": 0.006134189353078376,
+    "temperature": 0.0033953423297100062
+  },
+  "metrics": {
+    "cv_best_macro_f1": 0.9864016204069397,
+    "test_holdout_accuracy": 0.9795454545454545,
+    "test_holdout_macro_precision": 0.9810114128295947,
+    "test_holdout_macro_recall": 0.9795454545454544,
+    "test_holdout_macro_f1": 0.9794117592577155
+  },
+  "environment": {
+    "python_version": "3.13.2",
+    "scikit_learn_version": "1.9.1",
+    "numpy_version": "2.5.3",
+    "pandas_version": "2.3.3",
+    "joblib_version": "1.6.0",
+    "platform": "Windows-10-10.0.19045-SP0"
+  }
+}
